@@ -1,0 +1,931 @@
+{
+	"info": {
+		"_postman_id": "b0b8bacd-85f9-40db-abed-427fa2a84103",
+		"name": "Library Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30136957"
+	},
+	"item": [
+		{
+			"name": "Book API",
+			"item": [
+				{
+					"name": "getAllBooks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/books"
+					},
+					"response": [
+						{
+							"name": "getAllBooks",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/books"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Sep 2023 17:29:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Strive to Succeed\",\n        \"description\": \"\",\n        \"publisher\": \"Harley publications\",\n        \"authors\": [\n            {\n                \"id\": 1,\n                \"firstName\": \"Henry\",\n                \"lastName\": \"Louis\",\n                \"email\": \"henry.louis@gmail.com\"\n            }\n        ],\n        \"genres\": [\n            {\n                \"id\": 1,\n                \"name\": \"Spiritual\",\n                \"description\": \"\",\n                \"type\": \"Spiritual\"\n            }\n        ],\n        \"currentBorrower\": null,\n        \"library\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "getBookById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/books/1"
+					},
+					"response": [
+						{
+							"name": "getBookById-error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/books/4"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Sep 2023 17:29:46 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": \"book-not-found\",\n    \"message\": \"Book with id=4 not found\",\n    \"statusCode\": 404,\n    \"statusName\": \"NOT_FOUND\",\n    \"path\": \"/api/books/4\",\n    \"method\": \"GET\",\n    \"timestamp\": \"2023-09-28T22:59:46.0768177\"\n}"
+						},
+						{
+							"name": "getBookById-success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/books/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Sep 2023 17:30:41 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"title\": \"Strive to Succeed\",\n    \"description\": \"\",\n    \"publisher\": \"Harley publications\",\n    \"authors\": [\n        {\n            \"id\": 1,\n            \"firstName\": \"Henry\",\n            \"lastName\": \"Louis\",\n            \"email\": \"henry.louis@gmail.com\"\n        }\n    ],\n    \"genres\": [\n        {\n            \"id\": 1,\n            \"name\": \"Spiritual\",\n            \"description\": \"\",\n            \"type\": \"Spiritual\"\n        }\n    ],\n    \"currentBorrower\": null,\n    \"library\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "createBook",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Strive to Succeed\",\r\n    \"description\": \"\",\r\n    \"publisher\": \"Harley publications\",\r\n    \"authors\": [{\r\n        \"firstName\": \"Henry\",\r\n        \"lastName\": \"Louis\",\r\n        \"email\": \"henry.louis@gmail.com\"\r\n    }],\r\n    \"genres\": [{\r\n        \"name\": \"Spiritual\",\r\n        \"description\": \"\",\r\n        \"type\": \"Spiritual\"\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/books"
+					},
+					"response": []
+				},
+				{
+					"name": "getBookByAuthor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/books/author/1"
+					},
+					"response": [
+						{
+							"name": "getBookByAuthor-success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/books/author/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Sep 2023 02:43:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Strive to Succeed\",\n        \"description\": \"\",\n        \"publisher\": \"Harley publications\",\n        \"authors\": [\n            {\n                \"id\": 1,\n                \"firstName\": \"Henry\",\n                \"lastName\": \"Louis\",\n                \"email\": \"henry.louis@gmail.com\"\n            }\n        ],\n        \"genres\": [\n            {\n                \"id\": 1,\n                \"name\": \"Spiritual\",\n                \"description\": \"\",\n                \"type\": \"Spiritual\"\n            }\n        ],\n        \"currentBorrower\": null,\n        \"library\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "getBookByGenre",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/books/genre/1"
+					},
+					"response": [
+						{
+							"name": "getBookByGenre-success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/books/genre/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Sep 2023 02:45:01 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Strive to Succeed\",\n        \"description\": \"\",\n        \"publisher\": \"Harley publications\",\n        \"authors\": [\n            {\n                \"id\": 1,\n                \"firstName\": \"Henry\",\n                \"lastName\": \"Louis\",\n                \"email\": \"henry.louis@gmail.com\"\n            }\n        ],\n        \"genres\": [\n            {\n                \"id\": 1,\n                \"name\": \"Spiritual\",\n                \"description\": \"\",\n                \"type\": \"Spiritual\"\n            }\n        ],\n        \"currentBorrower\": null,\n        \"library\": null\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "updateBook",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Strive to Succeed\",\r\n    \"description\": \"\",\r\n    \"publisher\": \"Harley publications\",\r\n    \"authors\": [{\r\n        \"firstName\": \"Henry\",\r\n        \"lastName\": \"Louis\",\r\n        \"email\": \"henry.louis@gmail.com\"\r\n    }],\r\n    \"genres\": [{\r\n        \"name\": \"Spiritual\",\r\n        \"description\": \"\",\r\n        \"type\": \"Spiritual\"\r\n    }],\r\n   \"currentBorrower\": {\r\n        \"firstName\": \"Rajashree\",\r\n        \"lastName\": \"Ravi\",\r\n        \"email\": \"rajashree.ravi@test.com\",\r\n        \"address\": \"\",\r\n        \"membershipNo\": \"MAD9801\",\r\n        \"bookLimit\": 20,\r\n        \"libraryBranch\": null\r\n    },\r\n   \"library\": {\r\n        \"branchName\": \"CHN-GUINDY\",\r\n        \"address\": \"\",\r\n        \"city\": \"Chennai\",\r\n        \"state\": \"TamilNadu\",\r\n        \"pincode\": 600064\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/books/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Author API",
+			"item": [
+				{
+					"name": "getAllAuthors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/authors"
+					},
+					"response": [
+						{
+							"name": "getAllAuthors",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/authors"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Sep 2023 17:34:34 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"firstName\": \"Henry\",\n        \"lastName\": \"Louis\",\n        \"email\": \"henry.louis@gmail.com\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "getAuthorById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/authors/5"
+					},
+					"response": [
+						{
+							"name": "getAuthorById - success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/authors/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Sep 2023 17:34:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"firstName\": \"Henry\",\n    \"lastName\": \"Louis\",\n    \"email\": \"henry.louis@gmail.com\"\n}"
+						},
+						{
+							"name": "getAuthorById-error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/authors/5"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Sep 2023 17:35:17 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": \"author-not-found\",\n    \"message\": \"Author with id=5 not found\",\n    \"statusCode\": 404,\n    \"statusName\": \"NOT_FOUND\",\n    \"path\": \"/api/authors/5\",\n    \"method\": \"GET\",\n    \"timestamp\": \"2023-09-28T23:05:17.716692\"\n}"
+						}
+					]
+				},
+				{
+					"name": "createAuthor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Kelvin\",\r\n    \"lastName\": \"Peter\",\r\n    \"email\": \"kelvin.peter@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/authors"
+					},
+					"response": [
+						{
+							"name": "createAuthor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Kelvin\",\r\n    \"lastName\": \"Peter\",\r\n    \"email\": \"kelvin.peter@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/api/authors"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Sep 2023 17:37:03 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"firstName\": \"Kelvin\",\n    \"lastName\": \"Peter\",\n    \"email\": \"kelvin.peter@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteAuthor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/authors/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genre API",
+			"item": [
+				{
+					"name": "getAllGenres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/genres"
+					},
+					"response": [
+						{
+							"name": "getAllGenres",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/genres"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Sep 2023 17:41:59 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Spiritual\",\n        \"description\": \"\",\n        \"type\": \"Spiritual\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "getGenreById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/genres/7"
+					},
+					"response": [
+						{
+							"name": "getGenreById-sucess",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/genres/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Sep 2023 17:44:23 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Spiritual\",\n    \"description\": \"\",\n    \"type\": \"Spiritual\"\n}"
+						},
+						{
+							"name": "getGenreById-error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/genres/7"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Sep 2023 17:44:42 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": \"genre-not-found\",\n    \"message\": \"Genre with id=7 not found\",\n    \"statusCode\": 404,\n    \"statusName\": \"NOT_FOUND\",\n    \"path\": \"/api/genres/7\",\n    \"method\": \"GET\",\n    \"timestamp\": \"2023-09-28T23:14:42.7996195\"\n}"
+						}
+					]
+				},
+				{
+					"name": "createGenre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Horror Fiction\",\r\n    \"description\": \"\",\r\n    \"type\": \"Thriller\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/genres"
+					},
+					"response": [
+						{
+							"name": "createGenre",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Horror Fiction\",\r\n    \"description\": \"\",\r\n    \"type\": \"Thriller\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/api/genres"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Sep 2023 17:45:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"Horror Fiction\",\n    \"description\": \"\",\n    \"type\": \"Thriller\"\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteGenre",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/genres/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Borrower API",
+			"item": [
+				{
+					"name": "getAllBorrowers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/borrowers"
+					},
+					"response": []
+				},
+				{
+					"name": "getBorrowerById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/borrowers/1"
+					},
+					"response": []
+				},
+				{
+					"name": "createBorrower",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Rajashree\",\r\n    \"lastName\": \"Ravi\",\r\n    \"email\": \"rajashree.ravi@test.com\",\r\n    \"address\": \"\",\r\n    \"membershipNo\": \"MAD9801\",\r\n    \"bookLimit\": 20,\r\n    \"books\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/borrowers"
+					},
+					"response": [
+						{
+							"name": "createBorrower",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Rajashree\",\r\n    \"lastName\": \"Ravi\",\r\n    \"email\": \"rajashree.ravi@test.com\",\r\n    \"address\": \"\",\r\n    \"membershipNo\": \"MAD9801\",\r\n    \"bookLimit\": 20,\r\n    \"books\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/api/borrowers"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Sep 2023 02:34:08 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"firstName\": \"Rajashree\",\n    \"lastName\": \"Ravi\",\n    \"email\": \"rajashree.ravi@test.com\",\n    \"address\": \"\",\n    \"membershipNo\": \"MAD9801\",\n    \"bookLimit\": 20,\n    \"books\": [],\n    \"libraryBranch\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteBorrower",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/borrowers/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Library API",
+			"item": [
+				{
+					"name": "getAllLibraryBranches",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/library-branches"
+					},
+					"response": []
+				},
+				{
+					"name": "getLibararyBranchById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/library-branches/2"
+					},
+					"response": [
+						{
+							"name": "getLibararyBranchById-error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/library-branches/7"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Sep 2023 02:36:58 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": \"library-not-found\",\n    \"message\": \"Library with id=7 not found\",\n    \"statusCode\": 404,\n    \"statusName\": \"NOT_FOUND\",\n    \"path\": \"/api/library-branches/7\",\n    \"method\": \"GET\",\n    \"timestamp\": \"2023-09-29T08:06:58.9884653\"\n}"
+						},
+						{
+							"name": "getLibararyBranchById-success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/library-branches/2"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Sep 2023 02:39:34 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"branchName\": \"CHN-MADIPAKKAM\",\n    \"address\": \"\",\n    \"city\": \"Chennai\",\n    \"state\": \"TamilNadu\",\n    \"pincode\": 600091,\n    \"books\": [],\n    \"borrowers\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "createLibraryBranch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"branchName\": \"CHN-MADIPAKKAM\",\r\n    \"address\": \"\",\r\n    \"city\": \"Chennai\",\r\n    \"state\": \"TamilNadu\",\r\n    \"pincode\": 600091\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/library-branches"
+					},
+					"response": [
+						{
+							"name": "createLibraryBranch",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"branchName\": \"CHN-MADIPAKKAM\",\r\n    \"address\": \"\",\r\n    \"city\": \"Chennai\",\r\n    \"state\": \"TamilNadu\",\r\n    \"pincode\": 600091\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/api/library-branches"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Sep 2023 02:39:06 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"branchName\": \"CHN-MADIPAKKAM\",\n    \"address\": \"\",\n    \"city\": \"Chennai\",\n    \"state\": \"TamilNadu\",\n    \"pincode\": 600091,\n    \"books\": null,\n    \"borrowers\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "deleteLibrary",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/library-branches/1"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
